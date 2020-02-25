@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Office.Interop.Excel;
-using _Excel = Microsoft.Office.Interop.Excel;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Comparator
 {
@@ -33,13 +33,18 @@ namespace Comparator
 			OpenFileDialog openFileDialog = new OpenFileDialog();
 			openFileDialog.Filter = "Excel files|*.xlsx|All files|*.*";
 			openFileDialog.DefaultExt = "*.xlsx";
+			string filename = "";
 			if (openFileDialog.ShowDialog() == true)
 			{
-				string filename = openFileDialog.FileName;
+				filename = openFileDialog.FileName;
 				textBox.Text = filename;
 			}
 
-			Excel
+			_Application ExcelApp = new Excel.Application();
+			ExcelApp.Visible = true;
+
+			Workbook workbook = new Excel.Workbook();
+			Worksheet worksheet = workbook.Open(filename);
 		}
 	}
 }
