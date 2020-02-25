@@ -30,21 +30,38 @@ namespace Comparator
 
 		private void Open_Click(object sender, RoutedEventArgs e)
 		{
-			OpenFileDialog openFileDialog = new OpenFileDialog();
-			openFileDialog.Filter = "Excel files|*.xlsx|All files|*.*";
-			openFileDialog.DefaultExt = "*.xlsx";
-			string filename = "";
-			if (openFileDialog.ShowDialog() == true)
+			try
 			{
-				filename = openFileDialog.FileName;
-				textBox.Text = filename;
+				OpenFileDialog openFileDialog = new OpenFileDialog();
+				openFileDialog.Filter = "Excel files|*.xlsx|All files|*.*";
+				openFileDialog.DefaultExt = "*.xlsx";
+				openFileDialog.Title= "Choose your destiny";
+				string filename = "";
+				if (openFileDialog.ShowDialog() == true)
+				{
+					filename = openFileDialog.FileName;
+					textBox.Text = filename;
+				}
+
+				Excel.Application ExcelApp = new Excel.Application();
+				ExcelApp.Visible = true;
+				ExcelApp.WindowState = Excel.XlWindowState.xlMaximized;
+				Excel.
+
+				//ExcelApp.DisplayFullScreen = true;
+
+				Excel.Workbook workbook;
+				Excel.Worksheet worksheet;
+				workbook = ExcelApp.Workbooks.Open(filename);
+				worksheet = workbook.ActiveSheet();
+				//ExcelApp.Application.DisplayFullScreen=true;
+
 			}
+			catch (Exception)
+			{
 
-			_Application ExcelApp = new Excel.Application();
-			ExcelApp.Visible = true;
-
-			Workbook workbook = new Excel.Workbook();
-			Worksheet worksheet = workbook.Open(filename);
+			}
+			
 		}
 	}
 }
