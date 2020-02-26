@@ -5,23 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Comparator"
         mc:Ignorable="d"
-        Title="Comparator" Height="600" Width="500"
+        Title="Comparator" Height="600" Width="500" MinHeight="500" MinWidth="450"
+        MaxHeight="650" MaxWidth="700"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition  Height="400"/>
             <RowDefinition  Height="200"/>
+            <RowDefinition  Height="50"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="250"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="Open" Content="Open" Grid.Column="0" Grid.Row="0" 
-                    MinWidth="50" MaxWidth="100" MinHeight="20" MaxHeight="35" 
-                    Click = "Open_Click"/>
-            <TextBox x:Name="textBox"  Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
-            <TextBox x:Name="textBox1"  Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="75"/>
+                </Grid.RowDefinitions>
+                <Label Content="Наша спецуха" Grid.Row="0" HorizontalAlignment="Center"/>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBox x:Name="FileNamePath"  Height="25" Width="195" Margin="5" />
+                    <Button x:Name="Open" Content="..." Grid.Column="0" 
+                            MinWidth="30" MaxWidth="35" MinHeight="10" MaxHeight="25" 
+                            Click = "Open_Click" FontSize="18" Margin="5" />
+                </StackPanel>
+                <Label Content="Введи начальную ячейку" Grid.Row="2" HorizontalAlignment="Center"/>
+                <TextBox x:Name="textBox" Height="35" Width="50" VerticalAlignment="Bottom" Grid.Row="2" 
+                         VerticalContentAlignment="Center"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Button x:Name="Go" Content="Погнали"  MinWidth="60" MaxWidth="65" MinHeight="10" MaxHeight="25"
+                    VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            
         </Grid>
     </Grid>
 </Window>
