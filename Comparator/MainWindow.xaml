@@ -20,7 +20,8 @@
             <Button x:Name="Open" Content="Open" Grid.Column="0" Grid.Row="0" 
                     MinWidth="50" MaxWidth="100" MinHeight="20" MaxHeight="35" 
                     Click = "Open_Click"/>
-            <TextBox x:Name="textBox"  Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+            <TextBox x:Name="textBox"  Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+            <TextBox x:Name="textBox1"  Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
         </Grid>
     </Grid>
 </Window>
