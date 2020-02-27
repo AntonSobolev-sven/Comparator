@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Comparator"
         mc:Ignorable="d"
-        Title="Comparator" Height="600" Width="500" MinHeight="500" MinWidth="450"
-        MaxHeight="650" MaxWidth="700"
+        Title="Comparator" Width="Auto" Height="Auto" SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
@@ -16,8 +15,8 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
@@ -26,20 +25,38 @@
                     <RowDefinition Height="75"/>
                 </Grid.RowDefinitions>
                 <Label Content="Наша спецуха" Grid.Row="0" HorizontalAlignment="Center"/>
-                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBox x:Name="FileNamePath"  Height="25" Width="195" Margin="5" />
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBox x:Name="FileNamePath" MinWidth="195" Height="25"  Margin="5" TextWrapping="Wrap"/>
                     <Button x:Name="Open" Content="..." Grid.Column="0" 
                             MinWidth="30" MaxWidth="35" MinHeight="10" MaxHeight="25" 
                             Click = "Open_Click" FontSize="18" Margin="5" />
                 </StackPanel>
                 <Label Content="Введи начальную ячейку" Grid.Row="2" HorizontalAlignment="Center"/>
-                <TextBox x:Name="textBox" Height="35" Width="50" VerticalAlignment="Bottom" Grid.Row="2" 
+                <TextBox x:Name="OurCell" Height="25" Width="40" VerticalAlignment="Bottom" Grid.Row="2" 
+                         VerticalContentAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="75"/>
+                </Grid.RowDefinitions>
+                <Label Content="Спецуха поставщика" Grid.Row="0" HorizontalAlignment="Center"/>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBox x:Name="FileNamePathKP"  Height="25" MinWidth="195" Margin="5" TextWrapping="Wrap" />
+                    <Button x:Name="OpenKP" Content="..." Grid.Column="0" 
+                            MinWidth="30" MaxWidth="35" MinHeight="10" MaxHeight="25" 
+                            Click = "OpenKP_Click" FontSize="18" Margin="5" />
+                </StackPanel>
+                <Label Content="Введи начальную ячейку" Grid.Row="2" HorizontalAlignment="Center"/>
+                <TextBox x:Name="CellKP" Height="25" Width="40" VerticalAlignment="Bottom" Grid.Row="2" 
                          VerticalContentAlignment="Center"/>
             </Grid>
         </Grid>
+
         <Grid Grid.Row="1">
             <Button x:Name="Go" Content="Погнали"  MinWidth="60" MaxWidth="65" MinHeight="10" MaxHeight="25"
-                    VerticalAlignment="Center"/>
+                    VerticalAlignment="Center" Click="Go_Click"/>
         </Grid>
         <Grid Grid.Row="2">
             
