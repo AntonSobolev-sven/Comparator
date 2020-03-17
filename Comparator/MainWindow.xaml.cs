@@ -26,9 +26,14 @@ namespace Comparator
 
 	public partial class MainWindow : System.Windows.Window
 	{
+		OpenFileDialog openFileDialog = new OpenFileDialog();
+
 		public MainWindow()
 		{
 			InitializeComponent();
+			openFileDialog.Filter = "Excel files|*.xlsx|All files|*.*";
+			openFileDialog.DefaultExt = "*.xlsx";
+			openFileDialog.Title = "Choose your destiny";
 		}
 
 		FileOC OpenfileOURSpec = new FileOC();
@@ -37,23 +42,32 @@ namespace Comparator
 		private void Open_Click(object sender, RoutedEventArgs e)
 		{
 			//FileOC fileOC = new FileOC();
+			//FileNamePath.Text = OpenfileOURSpec.filename;
+			if (openFileDialog.ShowDialog() == true)
+			{
+				FileNamePath.Text = openFileDialog.FileName;
+			}
+			OpenfileOURSpec.filename = FileNamePath.Text;
 			OpenfileOURSpec.OpenFile();
-			FileNamePath.Text = OpenfileOURSpec.filename;
 
 		}
 
 		private void OpenKP_Click(object sender, RoutedEventArgs e)
 		{
 			//FileOC fileOC = new FileOC();
+			//FileNamePathKP.Text = OpenfileOURSpec.filename;
+			if (openFileDialog.ShowDialog() == true)
+			{
+				FileNamePathKP.Text = openFileDialog.FileName;
+			}
+			OpenfileProvSpec.filename = FileNamePath.Text;
 			OpenfileProvSpec.OpenFile();
-			FileNamePathKP.Text = OpenfileOURSpec.filename;
+
 		}
 
 		private void Go_Click(object sender, RoutedEventArgs e)
 		{
-			//FileOC fileOC = new FileOC();
-			CompareFiles.Compare();
-			CompareFiles.Cell = OurCell.Text;
+
 		}
 	}
 }

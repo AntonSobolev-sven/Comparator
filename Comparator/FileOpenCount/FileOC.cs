@@ -15,7 +15,7 @@ namespace Comparator.FileOpenCount
 	{
 		public string Cell { get; set; }
 		public string TextCells { get; private set; }
-		public string filename { get; private set; }
+		public string filename { get;  set; }
 		List<string>  OurSpec = new List<string>();
 		public Worksheet worksheet { get; private set; }
 
@@ -24,14 +24,14 @@ namespace Comparator.FileOpenCount
 		{
 			try
 			{
-				OpenFileDialog openFileDialog = new OpenFileDialog();
-				openFileDialog.Filter = "Excel files|*.xlsx|All files|*.*";
-				openFileDialog.DefaultExt = "*.xlsx";
-				openFileDialog.Title = "Choose your destiny";
-				if (openFileDialog.ShowDialog() == true)
-				{
-					filename = openFileDialog.FileName;
-				}
+				//OpenFileDialog openFileDialog = new OpenFileDialog();
+				//openFileDialog.Filter = "Excel files|*.xlsx|All files|*.*";
+				//openFileDialog.DefaultExt = "*.xlsx";
+				//openFileDialog.Title = "Choose your destiny";
+				//if (openFileDialog.ShowDialog() == true)
+				//{
+				//	filename = openFileDialog.FileName;
+				//}
 				Excel.Application ExcelApp = new Excel.Application();
 				ExcelApp.Visible = true;
 				//ExcelApp.WindowState = XlWindowState.xlMaximized;
