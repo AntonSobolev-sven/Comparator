@@ -46,8 +46,9 @@ namespace Comparator
 			if (openFileDialog.ShowDialog() == true)
 			{
 				FileNamePath.Text = openFileDialog.FileName;
+				FileOC.filenameOurSpecification = FileNamePath.Text;
+				OpenfileOURSpec.CheckOpenFileOUR = true;
 			}
-			OpenfileOURSpec.filename = FileNamePath.Text;
 			OpenfileOURSpec.OpenFile();
 
 		}
@@ -59,15 +60,16 @@ namespace Comparator
 			if (openFileDialog.ShowDialog() == true)
 			{
 				FileNamePathKP.Text = openFileDialog.FileName;
+				FileOC.filenameKPSpecification = FileNamePathKP.Text;
+				OpenfileProvSpec.CheckOpenFileKP = true;
 			}
-			OpenfileProvSpec.filename = FileNamePath.Text;
 			OpenfileProvSpec.OpenFile();
-
 		}
 
 		private void Go_Click(object sender, RoutedEventArgs e)
 		{
-
+			CompareFiles.Compare();
+			
 		}
 	}
 }

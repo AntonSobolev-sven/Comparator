@@ -13,32 +13,43 @@ namespace Comparator.FileOpenCount
 {
 	class FileOC
 	{
+		public bool CheckOpenFileOUR { get; set; }
+		public bool CheckOpenFileKP { get; set; }
 		public string Cell { get; set; }
 		public string TextCells { get; private set; }
-		public string filename { get;  set; }
+		public static string filenameOurSpecification { get;  set; }
+		public static string filenameKPSpecification { get;  set; }
 		List<string>  OurSpec = new List<string>();
-		public Worksheet worksheet { get; private set; }
-
+		public static Worksheet worksheetOurSpecification { get;  set; }
+		public static Workbook workbookOurSpecification { get;  set; }
+		public static Worksheet worksheetKPSpecification { get; set; }
+		public static Workbook workbookKPSpecification { get; set; }
+		public static string filename1 { get; set; }
+		public static string filename2 { get; set; }
 
 		public void OpenFile()
 		{
 			try
 			{
-				//OpenFileDialog openFileDialog = new OpenFileDialog();
-				//openFileDialog.Filter = "Excel files|*.xlsx|All files|*.*";
-				//openFileDialog.DefaultExt = "*.xlsx";
-				//openFileDialog.Title = "Choose your destiny";
-				//if (openFileDialog.ShowDialog() == true)
-				//{
-				//	filename = openFileDialog.FileName;
-				//}
 				Excel.Application ExcelApp = new Excel.Application();
 				ExcelApp.Visible = true;
 				//ExcelApp.WindowState = XlWindowState.xlMaximized;
 				//ExcelApp.DisplayFullScreen = true;
-				Workbook workbook;
-				workbook = ExcelApp.Workbooks.Open(filename);
-				worksheet = workbook.Worksheets[1];
+				if (CheckOpenFileOUR)
+				{
+					workbookOurSpecification = ExcelApp.Workbooks.Open(filenameOurSpecification);
+					worksheetOurSpecification = workbookOurSpecification.Worksheets[1];
+					filename1 = filenameOurSpecification;
+
+				}
+				if (CheckOpenFileKP)
+				{
+					workbookKPSpecification = ExcelApp.Workbooks.Open(filenameKPSpecification);
+					worksheetKPSpecification = workbookKPSpecification.Worksheets[1];
+					filename2 = filenameKPSpecification;
+				}
+				//CheckOpenFileOUR = false;
+				//CheckOpenFileKP = false;
 				//Excel.Range range = (Excel.Range)worksheet.Cells[1, 1];
 				//textBox.Text = range.Value2;
 				//Cell = .Text;
@@ -55,7 +66,18 @@ namespace Comparator.FileOpenCount
 		}
 		public void Compare()
 		{
-			TextCells = worksheet.Range[Cell].Value;
+			try
+			{
+				MessageBox.Show(worksheetOurSpecification.Range[1, 1].Value);
+
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+
+			}
+			//TextCells = worksheetOurSpecification.Range[1].Value2;
+			//MessageBox.Show(worksheetKPSpecification.Range[1,1].Value2);
 
 		}
 
