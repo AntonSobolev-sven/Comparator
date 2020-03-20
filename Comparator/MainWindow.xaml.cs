@@ -68,8 +68,10 @@ namespace Comparator
 
 		private void Go_Click(object sender, RoutedEventArgs e)
 		{
+			FileOC.StartCellOur = StartOurCell.Text;
+			FileOC.StartCellProvider = StartProviderCell.Text;
 			CompareFiles.Compare();
-			
 		}
+		
 	}
 }

@@ -33,7 +33,7 @@
                             Click = "Open_Click" FontSize="18" Margin="5" />
                 </StackPanel>
                 <Label Content="Введи начальную ячейку" Grid.Row="2" HorizontalAlignment="Center"/>
-                <TextBox x:Name="OurCell" Height="25" Width="40" VerticalAlignment="Bottom" Grid.Row="2" 
+                <TextBox x:Name="StartOurCell" Height="25" Width="40" VerticalAlignment="Bottom" Grid.Row="2" 
                          VerticalContentAlignment="Center"/>
                 <DockPanel HorizontalAlignment="Left" Height="100" LastChildFill="False" Margin="232,44,-87,-68" Grid.Row="2" VerticalAlignment="Top" Width="100"/>
             </Grid>
@@ -51,7 +51,7 @@
                             Click = "OpenKP_Click" FontSize="18" Margin="5" />
                 </StackPanel>
                 <Label Content="Введи начальную ячейку" Grid.Row="2" HorizontalAlignment="Center"/>
-                <TextBox x:Name="CellKP" Height="25" Width="40" VerticalAlignment="Bottom" Grid.Row="2" 
+                <TextBox x:Name="StartProviderCell" Height="25" Width="40" VerticalAlignment="Bottom" Grid.Row="2" 
                          VerticalContentAlignment="Center"/>
             </Grid>
         </Grid>
@@ -61,7 +61,16 @@
                     VerticalAlignment="Center" Click="Go_Click"/>
         </Grid>
         <Grid Grid.Row="2">
-            
+            <ListView x:Name="NotfoundLW" Margin="5">
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="Заказной" DisplayMemberBinding="{Binding OrderN}"/>
+                            <GridViewColumn Header="Номер строки" DisplayMemberBinding="{Binding RowN}"/>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
     </Grid>
 </Window>
