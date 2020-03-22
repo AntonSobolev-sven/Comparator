@@ -6,15 +6,19 @@
         xmlns:local="clr-namespace:Comparator"
         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" x:Class="Comparator.MainWindow"
         mc:Ignorable="d"
-        Title="Comparator" Width="Auto" Height="494" SizeToContent="WidthAndHeight"
+        Title="Comparator" Width="Auto" Height="450" SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen" Background="AliceBlue" >
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="233*"/>
+            <ColumnDefinition Width="287*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition  Height="200"/>
+            <RowDefinition  Height="150"/>
             <RowDefinition  Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -27,7 +31,7 @@
                 </Grid.RowDefinitions>
                 <Label Content="Наша спецуха" Grid.Row="0" HorizontalAlignment="Center"/>
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <TextBox x:Name="FileNamePath" MinWidth="195" Height="25"  Margin="5" TextWrapping="Wrap"/>
+                    <TextBox x:Name="FileNamePath" Width="195" Height="25"  Margin="5" TextWrapping="Wrap" />
                     <Button x:Name="Open" Content="..." Grid.Column="0" 
                             MinWidth="30" MaxWidth="35" MinHeight="10" MaxHeight="25" 
                             Click = "Open_Click" FontSize="18" Margin="5" />
@@ -35,7 +39,6 @@
                 <Label Content="Введи начальную ячейку" Grid.Row="2" HorizontalAlignment="Center"/>
                 <TextBox x:Name="StartOurCell" Height="25" Width="40" VerticalAlignment="Bottom" Grid.Row="2" 
                          VerticalContentAlignment="Center"/>
-                <DockPanel HorizontalAlignment="Left" Height="100" LastChildFill="False" Margin="232,44,-87,-68" Grid.Row="2" VerticalAlignment="Top" Width="100"/>
             </Grid>
             <Grid Grid.Column="1" >
                 <Grid.RowDefinitions>
@@ -45,7 +48,7 @@
                 </Grid.RowDefinitions>
                 <Label Content="Спецуха поставщика" Grid.Row="0" HorizontalAlignment="Center"/>
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <TextBox x:Name="FileNamePathKP"  Height="25" MinWidth="195" Margin="5" TextWrapping="Wrap" />
+                    <TextBox x:Name="FileNamePathKP"  Height="25" Width="195" Margin="5" TextWrapping="Wrap" AcceptsReturn="True" />
                     <Button x:Name="OpenKP" Content="..." Grid.Column="0" 
                             MinWidth="30" MaxWidth="35" MinHeight="10" MaxHeight="25" 
                             Click = "OpenKP_Click" FontSize="18" Margin="5" />
@@ -56,21 +59,25 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Button x:Name="Go" Content="Погнали"  Width="70" Height="20" HorizontalContentAlignment="Center"
                     VerticalAlignment="Center" Click="Go_Click"/>
         </Grid>
-        <Grid Grid.Row="2">
-            <ListView x:Name="NotfoundLW" Margin="5">
-                <ListView.View>
-                    <GridView>
-                        <GridView.Columns>
-                            <GridViewColumn Header="Заказной" DisplayMemberBinding="{Binding OrderN}"/>
-                            <GridViewColumn Header="Номер строки" DisplayMemberBinding="{Binding RowN}"/>
-                        </GridView.Columns>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <StackPanel>
+                <ProgressBar x:Name="ProgressBar" Height="25" Width="300" />
+                <ListView x:Name="NotfoundList" Margin="5" VerticalAlignment="Stretch" MinHeight="200" >
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Заказной" DisplayMemberBinding = "{Binding OrderN}" Width="300"/>
+                                <GridViewColumn Header="Номер строки" DisplayMemberBinding = "{Binding RowN}" Width="200"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+
         </Grid>
     </Grid>
 </Window>

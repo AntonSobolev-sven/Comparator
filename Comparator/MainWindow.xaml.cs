@@ -36,6 +36,8 @@ namespace Comparator
 			openFileDialog.Title = "Choose your destiny";
 		}
 
+		List<FileOC> fileOCs = new List<FileOC>();
+
 		FileOC OpenfileOURSpec = new FileOC();
 		FileOC OpenfileProvSpec = new FileOC();
 		FileOC CompareFiles = new FileOC();
@@ -48,8 +50,12 @@ namespace Comparator
 				FileNamePath.Text = openFileDialog.FileName;
 				FileOC.filenameOurSpecification = FileNamePath.Text;
 				OpenfileOURSpec.CheckOpenFileOUR = true;
+				OpenfileOURSpec.OpenFile();
 			}
-			OpenfileOURSpec.OpenFile();
+			else
+			{
+				FileNamePath.Text = null;
+			}
 
 		}
 
@@ -62,8 +68,12 @@ namespace Comparator
 				FileNamePathKP.Text = openFileDialog.FileName;
 				FileOC.filenameKPSpecification = FileNamePathKP.Text;
 				OpenfileProvSpec.CheckOpenFileKP = true;
+				OpenfileProvSpec.OpenFile();
 			}
-			OpenfileProvSpec.OpenFile();
+			else
+			{
+				FileNamePathKP.Text = null;
+			}
 		}
 
 		private void Go_Click(object sender, RoutedEventArgs e)
@@ -71,7 +81,9 @@ namespace Comparator
 			FileOC.StartCellOur = StartOurCell.Text;
 			FileOC.StartCellProvider = StartProviderCell.Text;
 			CompareFiles.Compare();
+			NotfoundList.Items.Add(new { CompareFiles.OrderN, V=2});
+
 		}
-		
+
 	}
 }
