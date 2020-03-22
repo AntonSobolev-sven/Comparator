@@ -61,12 +61,12 @@
                     VerticalAlignment="Center" Click="Go_Click"/>
         </Grid>
         <Grid Grid.Row="2">
-            <ListView x:Name="NotfoundLW" Margin="5">
+            <ListView x:Name="NotfoundLW" Margin="5" HorizontalAlignment="Stretch" MinHeight="100">
                 <ListView.View>
                     <GridView>
                         <GridView.Columns>
-                            <GridViewColumn Header="Заказной" DisplayMemberBinding="{Binding OrderN}"/>
-                            <GridViewColumn Header="Номер строки" DisplayMemberBinding="{Binding RowN}"/>
+                            <GridViewColumn Header="Заказной" DisplayMemberBinding="{Binding OrderN}" Width="300" />
+                            <GridViewColumn Header="Номер строки" DisplayMemberBinding="{Binding RowN}" Width="230"/>
                         </GridView.Columns>
                     </GridView>
                 </ListView.View>
