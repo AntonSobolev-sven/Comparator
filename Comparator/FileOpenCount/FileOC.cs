@@ -60,7 +60,7 @@ namespace Comparator.FileOpenCount
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(ex.Message);
+				MessageBox.Show("Какая-то хуйня: " + " " + ex.Message);
 				//Close();
 			}
 		}
@@ -83,21 +83,28 @@ namespace Comparator.FileOpenCount
 				bool find = false;//переменная для выхода из проверки при обнаружении искомого элемента. Также используется при выводе элемента, которы не был найден
 				int OurSpecificationRowsMax = worksheetOurSpecification.UsedRange.Rows.Count;
 				int ProviderSpecificationRowsMax = worksheetKPSpecification.UsedRange.Rows.Count;
-				for (int i = worksheetOurSpecification.Range[StartCellOur].Row; i < OurSpecificationRowsMax + worksheetOurSpecification.Range[StartCellOur].Row; i++)
+				for (int i = worksheetOurSpecification.Range[StartCellOur].Row; i < OurSpecificationRowsMax; i++)
 				{
+					if (worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Value2==null)
+					{
+						continue;
+					}
 					for (int j = worksheetKPSpecification.Range[StartCellProvider].Row; j <= ProviderSpecificationRowsMax; j++)
 					{
-						//Добавить проверку на пустую ячейку
-						//где-то здесь
+
+						if (worksheetKPSpecification.Cells[j, worksheetOurSpecification.Range[StartCellProvider].Column].Value2 == null)
+						{
+							continue;
+						}
 						//
 						//Проверка на сравнение. Сравниваем по ячейчкам, задавая ее адрес в формате [i,j] - где i - строка j - столбец. У нас i-строка, а так так мы идем по одному столбцу, то он не изменен
 						// и получаем его из свойства Column диапазона, образованного начальной ячейкой.
- 						if (worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Value2.Replace("-", "") == worksheetKPSpecification.Cells[j, worksheetOurSpecification.Range[StartCellProvider].Column].Value2.Replace("-", ""))
+						if (worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Value2.Replace("-", "") == worksheetKPSpecification.Cells[j, worksheetOurSpecification.Range[StartCellProvider].Column].Value2.Replace("-", ""))
 						{
 							//OrderN = worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Value2.Replace("-", "");
 							//RowN = i;
-							MessageBox.Show("Нашел" + " " + worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Value2 + " " +
-								"=" + " " + worksheetKPSpecification.Cells[j, worksheetOurSpecification.Range[StartCellProvider].Column].Value2);
+							//MessageBox.Show("Нашел" + " " + worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Value2 + " " +
+							//	"=" + " " + worksheetKPSpecification.Cells[j, worksheetOurSpecification.Range[StartCellProvider].Column].Value2);
 							find = true;
 							break;
 						}
@@ -106,7 +113,7 @@ namespace Comparator.FileOpenCount
 					if (!find)
 					{
 						//MainWindow.NotfoundList.Items.Add(new { OrderN = worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Value2.Replace("-", ""), RowN = worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Row }) ;
-						MessageBox.Show("Не нашел" + " " + worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Value2);
+						//MessageBox.Show("Не нашел" + " " + worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Value2);
 						Order.Add(worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Value2);
 					}
 					find = false;

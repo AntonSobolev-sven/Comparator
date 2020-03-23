@@ -31,7 +31,7 @@ namespace Comparator
 		public MainWindow()
 		{
 			InitializeComponent();
-			openFileDialog.Filter = "Excel files|*.xlsx|All files|*.*";
+			openFileDialog.Filter = "Excel files|*.xlsx;*.xls|All files|*.*";
 			openFileDialog.DefaultExt = "*.xlsx";
 			openFileDialog.Title = "Choose your destiny";
 		}
@@ -81,7 +81,7 @@ namespace Comparator
 			FileOC.StartCellOur = StartOurCell.Text;
 			FileOC.StartCellProvider = StartProviderCell.Text;
 			CompareFiles.Compare();
-			NotfoundList.Items.Add(new { CompareFiles.OrderN, V=2});
+			//NotfoundList.Items.Add(new { CompareFiles.OrderN, V=2});
 
 		}
 
