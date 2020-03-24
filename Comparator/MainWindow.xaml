@@ -10,36 +10,42 @@
         WindowStartupLocation="CenterScreen" Background="AliceBlue" >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="233*"/>
-            <ColumnDefinition Width="287*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
         <Grid.RowDefinitions>
             <RowDefinition  Height="150"/>
             <RowDefinition  Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        
         <Grid Grid.Row="0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="25"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="75"/>
-                </Grid.RowDefinitions>
-                <Label Content="Наша спецуха" Grid.Row="0" HorizontalAlignment="Center"/>
-                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <TextBox x:Name="FileNamePath" Width="195" Height="25"  Margin="5" TextWrapping="Wrap" />
-                    <Button x:Name="Open" Content="..." Grid.Column="0" 
+            <GroupBox>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Наша спецуха" Grid.Row="0" HorizontalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                        <TextBox x:Name="FileNamePath" Width="195" Height="25"  Margin="5" TextWrapping="Wrap" />
+                        <Button x:Name="Open" Content="..." Grid.Column="0" 
                             MinWidth="30" MaxWidth="35" MinHeight="10" MaxHeight="25" 
                             Click = "Open_Click" FontSize="18" Margin="5" />
-                </StackPanel>
-                <Label Content="Введи начальную ячейку" Grid.Row="2" HorizontalAlignment="Center"/>
-                <TextBox x:Name="StartOurCell" Height="25" Width="40" VerticalAlignment="Bottom" Grid.Row="2" 
-                         VerticalContentAlignment="Center"/>
-            </Grid>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10">
+                        <Label Content="Введи начальную ячейку" Grid.Row="2" HorizontalAlignment="Left" />
+                        <TextBox x:Name="StartOurCell" Height="25" Width="40" Margin="5"/>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+            
             <Grid Grid.Column="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
@@ -66,11 +72,11 @@
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
             <StackPanel>
                 <ProgressBar x:Name="ProgressBar" Height="25" Width="300" />
-                <ListView x:Name="NotfoundList" Margin="5" VerticalAlignment="Stretch" MinHeight="200" >
+                <ListView x:Name="NotfoundList" Margin="5" VerticalAlignment="Stretch" MinHeight="200" ItemsSource="{Binding CompareFiles.Order}">
                     <ListView.View>
                         <GridView>
                             <GridView.Columns>
-                                <GridViewColumn Header="Заказной" DisplayMemberBinding = "{Binding OrderN}" Width="300"/>
+                                <GridViewColumn Header="Заказной" DisplayMemberBinding = "{Binding Order}" Width="300"/>
                                 <GridViewColumn Header="Номер строки" DisplayMemberBinding = "{Binding RowN}" Width="200"/>
                             </GridView.Columns>
                         </GridView>

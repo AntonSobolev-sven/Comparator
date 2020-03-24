@@ -9,7 +9,7 @@ namespace Comparator.FileOpenCount
 	
 	class FileOC
 	{
-		List<string> Order = new List<string>();
+		public List<string> Order = new List<string>();
 		public bool CheckOpenFileOUR { get; set; }
 		public bool CheckOpenFileKP { get; set; }
 		public string Cell { get; set; }
@@ -113,7 +113,7 @@ namespace Comparator.FileOpenCount
 					if (!find)
 					{
 						//MainWindow.NotfoundList.Items.Add(new { OrderN = worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Value2.Replace("-", ""), RowN = worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Row }) ;
-						//MessageBox.Show("Не нашел" + " " + worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Value2);
+						MessageBox.Show("Не нашел" + " " + worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Value2);
 						Order.Add(worksheetOurSpecification.Cells[i, worksheetOurSpecification.Range[StartCellOur].Column].Value2);
 					}
 					find = false;
